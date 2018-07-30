@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'dart:async';
+
 class ProductDetail extends StatelessWidget {
   final String title;
   final String imageUrl;
@@ -9,11 +11,17 @@ class ProductDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Detail Product"),
+    return WillPopScope(
+      onWillPop: () {
+        Navigator.pop(context,false);
+        return Future.value(false);
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Detail Product"),
+        ),
+        body: BodyDetail(imageUrl, title),
       ),
-      body: BodyDetail(imageUrl, title),
     );
   }
 }

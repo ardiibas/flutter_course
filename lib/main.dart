@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart';
 
-import './pages/home.dart';
+import './pages/auth.dart';
 
 main() {
   /*
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.deepOrange,
           accentColor: Colors.deepPurpleAccent),
-      home: HomePage(),
+      home: AuthPage(),
     );
   }
 }
