@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../product_manager.dart';
-import './pertamax.dart';
+import './home.dart';
 
-class HomePage extends StatelessWidget {
+class Pertamax extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new Scaffold(
+    return Scaffold(
       drawer: Drawer(
         child: Column(
           children: <Widget>[
@@ -16,19 +15,21 @@ class HomePage extends StatelessWidget {
               title: Text("Choose"),
             ),
             ListTile(
-              title: Text("Pertamax"),
+              title: Text("Home"),
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Pertamax()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => HomePage()));
               },
             )
           ],
         ),
       ),
       appBar: AppBar(
-        title: Text("Flutter Course"),
+        title: Text("Pertamax"),
       ),
-      body: ProductManager(),
+      body: Center(
+        child: Text("Pertamax gan!"),
+      ),
     );
   }
 }
