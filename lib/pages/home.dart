@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../product_manager.dart';
-import './pertamax.dart';
+import './manage_product.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
               title: Text("Pertamax"),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Pertamax()));
+                    MaterialPageRoute(builder: (context) => ManageProduct()));
               },
             )
           ],
