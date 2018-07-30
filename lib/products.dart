@@ -49,7 +49,9 @@ class Products extends StatelessWidget {
         itemCount: products.length,
       );
     } else {
-      productCard = Container();
+      productCard = Center(
+        child: Text("Add some data please :("),
+      );
     }
 
     return productCard;

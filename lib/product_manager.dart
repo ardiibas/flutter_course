@@ -35,7 +35,7 @@ class _ProductManager extends State<ProductManager> {
 
   void _deleteProduct(int index) {
     setState(() {
-      _products.remove(index);
+      _products.removeAt(index);
     });
   }
 
