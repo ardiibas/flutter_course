@@ -1,22 +1,47 @@
 import 'package:flutter/material.dart';
 
-class CreateProduct extends StatelessWidget {
+class CreateProduct extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _CreateProductState();
+  }
+}
+
+class _CreateProductState extends State<CreateProduct> {
+  String titleValue;
+  String descriptionValue;
+  double priceValue;
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Center(
-      child: RaisedButton(
-        child: Text("Show Modul"),
-        onPressed: () {
-          showModalBottomSheet(
-              context: context,
-              builder: (context) {
-                return Center(
-                  child: Text("Hai sayang!"),
-                );
-              });
-        },
-      ),
+    return Column(
+      children: <Widget>[
+        TextField(
+          onChanged: (String value) {
+            setState(() {
+              titleValue = value;
+            });
+          },
+        ),
+        TextField(
+          maxLines: 4,
+          onChanged: (String value) {
+            setState(() {
+              descriptionValue = value;
+            });
+          },
+        ),
+        TextField(
+          keyboardType: TextInputType.number,
+          onChanged: (String value) {
+            setState(() {
+              priceValue = double.parse(value);
+            });
+          },
+        ),
+      ],
     );
   }
 }
