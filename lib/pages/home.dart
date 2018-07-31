@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
               title: Text("Choose"),
             ),
             ListTile(
-              title: Text("Pertamax"),
+              title: Text("Manage Product"),
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ManageProduct()));

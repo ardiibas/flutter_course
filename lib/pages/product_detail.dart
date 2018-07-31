@@ -13,7 +13,7 @@ class ProductDetail extends StatelessWidget {
     // TODO: implement build
     return WillPopScope(
       onWillPop: () {
-        Navigator.pop(context,false);
+        Navigator.pop(context, false);
         return Future.value(false);
       },
       child: Scaffold(
@@ -24,6 +24,32 @@ class ProductDetail extends StatelessWidget {
       ),
     );
   }
+}
+
+void _showDialogWarning(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Are you sure?"),
+          content: Text("This action cannot be undone!"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("No"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            FlatButton(
+              child: Text("Yes"),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context, true);
+              },
+            ),
+          ],
+        );
+      });
 }
 
 class BodyDetail extends StatelessWidget {
@@ -47,7 +73,7 @@ class BodyDetail extends StatelessWidget {
           child: RaisedButton(
             color: Colors.indigo[50],
             child: Text("Delete"),
-            onPressed: () => Navigator.pop(context, true),
+            onPressed: () => _showDialogWarning(context),
           ),
         )
       ],
