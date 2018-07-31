@@ -2,32 +2,28 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart';
 
 import './pages/auth.dart';
-import './pages/home.dart';
-import './pages/manage_product.dart';
-import './pages/product_detail.dart';
+import './pages/products_admin.dart';
+import './pages/products.dart';
+import './pages/product.dart';
 
-main() {
-  /*
-  debugPaintSizeEnabled = true; // show margin dkk (Base on rendering)
-  debugPaintBaselinesEnabled = true; // show gravity (Base on rendering)
-  debugPaintPointersEnabled = true; // show item yang di klik (Base on rendering)
-  */
-
+void main() {
+  // debugPaintSizeEnabled = true;
+  // debugPaintBaselinesEnabled = true;
+  // debugPaintPointersEnabled = true;
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _MyAppState();
   }
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Map<String, String>> _products = [];
+  List<Map<String, dynamic>> _products = [];
 
-  void _addProduct(Map<String, String> product) {
+  void _addProduct(Map<String, dynamic> product) {
     setState(() {
       _products.add(product);
     });
@@ -42,18 +38,17 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
-      // debugShowMaterialGrid: true, // show grid (Base on material)
+      // debugShowMaterialGrid: true,
       theme: ThemeData(
           brightness: Brightness.light,
           primarySwatch: Colors.deepOrange,
           accentColor: Colors.deepPurple),
       // home: AuthPage(),
       routes: {
-        '/': (BuildContext context) =>
-            HomePage(_products, _addProduct, _deleteProduct),
-        '/admin': (BuildContext context) => ManageProduct(),
+        '/': (BuildContext context) => ProductsPage(_products),
+        '/admin': (BuildContext context) =>
+            ProductsAdminPage(_addProduct, _deleteProduct),
       },
       onGenerateRoute: (RouteSettings settings) {
         final List<String> pathElements = settings.name.split('/');
@@ -63,7 +58,7 @@ class _MyAppState extends State<MyApp> {
         if (pathElements[1] == 'product') {
           final int index = int.parse(pathElements[2]);
           return MaterialPageRoute<bool>(
-            builder: (BuildContext context) => ProductDetail(
+            builder: (BuildContext context) => ProductPage(
                 _products[index]['title'], _products[index]['image']),
           );
         }
@@ -71,8 +66,7 @@ class _MyAppState extends State<MyApp> {
       },
       onUnknownRoute: (RouteSettings settings) {
         return MaterialPageRoute(
-            builder: (BuildContext context) =>
-                HomePage(_products, _addProduct, _deleteProduct));
+            builder: (BuildContext context) => ProductsPage(_products));
       },
     );
   }

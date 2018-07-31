@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-import './home.dart';
+import './products.dart';
 
 class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login"),
+        title: Text('Login'),
       ),
       body: Center(
         child: RaisedButton(
-          child: Text("Login"),
+          child: Text('LOGIN'),
           onPressed: () {
             Navigator.pushReplacementNamed(context, '/');
           },

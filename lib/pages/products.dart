@@ -2,26 +2,23 @@ import 'package:flutter/material.dart';
 
 import '../product_manager.dart';
 
-class HomePage extends StatelessWidget {
-  final List<Map<String, String>> products;
-  final Function addProduct;
-  final Function deleteProduct;
+class ProductsPage extends StatelessWidget {
+  final List<Map<String, dynamic>> products;
 
-  HomePage(this.products, this.addProduct, this.deleteProduct);
+  ProductsPage(this.products);
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return new Scaffold(
+    return Scaffold(
       drawer: Drawer(
         child: Column(
           children: <Widget>[
             AppBar(
               automaticallyImplyLeading: false,
-              title: Text("Choose"),
+              title: Text('Choose'),
             ),
             ListTile(
-              title: Text("Manage Product"),
+              title: Text('Manage Products'),
               onTap: () {
                 Navigator.pushReplacementNamed(context, '/admin');
               },
@@ -30,9 +27,9 @@ class HomePage extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
-        title: Text("Flutter Course"),
+        title: Text('EasyList'),
       ),
-      body: ProductManager(),
+      body: ProductManager(products),
     );
   }
 }
