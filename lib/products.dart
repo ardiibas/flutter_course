@@ -16,18 +16,29 @@ class Products extends StatelessWidget {
             height: 10.0,
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            padding: EdgeInsets.all(10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Text(
-                  products[index]['title'],
-                ),
+                Text(products[index]['title']),
                 SizedBox(
                   width: 10.0,
                 ),
                 Text('\$${products[index]['price'].toString()}'),
               ],
+            ),
+          ),
+          DecoratedBox(
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 1.0),
+                borderRadius: BorderRadius.circular(5.0)),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.5),
+              child: Text(
+                "Yogyakarta, Indonesia",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+              ),
             ),
           ),
           ButtonBar(
